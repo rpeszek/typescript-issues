@@ -5,6 +5,9 @@
  * 
  * TS incorrectly computes <T> in 'hole()' when assigned to function arguments by
  * trying to incorrectly widen the function inputs to 'unknown'.  
+ * 
+ * Submitted as bug report
+ * https://github.com/microsoft/TypeScript/issues/48624
  */
 
 

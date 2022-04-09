@@ -1,6 +1,9 @@
 /*
  * Examples of nonsense / wrong code accepted by the TypeScript compiler.
  * All have this in common: unknown is found somewhere in the type signature
+ * 
+ * Submitted as bug report
+ * https://github.com/microsoft/TypeScript/issues/48624
  */
 
 /**

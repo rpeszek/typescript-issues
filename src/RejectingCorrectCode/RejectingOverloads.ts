@@ -3,6 +3,9 @@
  *
  * This example is motivated by Office API
  * Office.js overloading is quite complex.
+ * 
+ * This appears to be known issue:
+ * https://github.com/microsoft/TypeScript/issues/43187
  */
 
 type Callback<T> = (x: T[]) => void
