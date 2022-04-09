@@ -3,11 +3,12 @@
  *
  * TS has problems with narrowing unbounded type variables to function types. 
  * 
- * TS incorrectly computes <T> in 'hole()' when assinged to function arguments by
+ * TS incorrectly computes <T> in 'hole()' when assigned to function arguments by
  * trying to incorrectly widen the function inputs to 'unknown'.  
  */
 
 
+// Given universally quantified, unbounded <T> 
 const hole = <T>(): T => {
     throw new Error("hole"); 
 }
@@ -15,6 +16,9 @@ const hole = <T>(): T => {
 
 export const apply = <T, R> (fn: (_1: T) => R) => (t:T): R => fn(t)
 
+
+//I want to use  universally quantified <T> as a function type.
+//
 //Does not compile 
 // 
 // Argument of type '(_: never) => never' is not assignable to parameter of type '(_: unknown) => unknown'.
@@ -23,7 +27,7 @@ export const apply = <T, R> (fn: (_1: T) => R) => (t:T): R => fn(t)
 apply(hole())
 
 
-//This compiles just fine, and is logically the most general type for 'fn'
+//This compiles just fine, and would be a good choice for the inferred type for 'fn'
 apply(hole<(_: never) => unknown>())
 
 
@@ -49,11 +53,3 @@ const x1: Fn<never, unknown> = {} as Fn<number, string>
 const x2: Fn<unknown, unknown> = {} as Fn<number, string> 
 
 
-// Note that TS appears to try to find the most general type when inferring
-//as shown below:
-
-const genCallback =  <T>(_:T): void => {}
-
-//computed type for 'genCallback' is
-// const genCallback: <unknown>(_: unknown) => void
-genCallback(hole())

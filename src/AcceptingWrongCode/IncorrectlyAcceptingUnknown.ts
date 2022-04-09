@@ -77,6 +77,8 @@ const callbackPromise = <T>(
 declare function myAynch(x: string, callback?: Callback<string>):void
 
 const example = async (item: Office.MessageRead): Promise<void> => {
+  //TS computes:
+  //const nonsence: unknown
     const nonsence =  await callbackPromise(
       curry3(myAynch)("html")(() => "boo"))
 }

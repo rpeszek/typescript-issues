@@ -11,7 +11,7 @@ type Callback<T> = (x: T[]) => void
  * Helper needed in examples
  */
 const callbackPromise = <T>(
-  getasync: (fx: Callback<T>) => void
+  _: (fx: Callback<T>) => void
 ): Promise<T> => {
   return new Promise((resolve, reject) => {
      //not important
