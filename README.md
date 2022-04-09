@@ -1,5 +1,5 @@
 
-# typescript-inssue
+# typescript-issues
 
 Examples of TypeScript compiler issues.
 Curated to report problems with the TypeScript project.

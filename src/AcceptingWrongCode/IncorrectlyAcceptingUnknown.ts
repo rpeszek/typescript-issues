@@ -57,6 +57,31 @@ const curry3 = <T1, T2, T3, R>(
  */
 const nonsense23 = curry(curry3);
 
+// -------------------------
+//Promisifying
+// -------------------------
+
+type Callback<T> = (x: T[]) => void;
+
+/**
+ * Helper needed in examples
+ */
+const callbackPromise = <T>(
+  getasync: (fx: Callback<T>) => void
+): Promise<T> => {
+  return new Promise((resolve, reject) => {
+     //not important
+  });
+};
+
+declare function myAynch(x: string, callback?: Callback<string>):void
+
+const example = async (item: Office.MessageRead): Promise<void> => {
+    const nonsence =  await callbackPromise(
+      curry3(myAynch)("html")(() => "boo"))
+}
+
+
 // --------------------------
 //Use of existential typing:
 // --------------------------
