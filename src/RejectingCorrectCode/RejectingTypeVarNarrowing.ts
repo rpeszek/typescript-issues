@@ -1,7 +1,7 @@
 /*
  * This is an interesting one. 
  *
- * TS has problems with applying unbounded type variables to function types. 
+ * TS has problems with narrowing unbounded type variables to function types. 
  * 
  * TS incorrectly computes <T> in 'hole()' when assinged to function arguments by
  * trying to incorrectly widen the function inputs to 'unknown'.  
