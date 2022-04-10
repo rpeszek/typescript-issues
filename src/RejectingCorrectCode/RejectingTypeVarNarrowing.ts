@@ -7,7 +7,7 @@
  * trying to incorrectly widen the function inputs to 'unknown'.  
  * 
  * Submitted as bug report
- * https://github.com/microsoft/TypeScript/issues/48624
+ * https://github.com/microsoft/TypeScript/issues/48625
  */
 
 
@@ -26,7 +26,7 @@ export const apply = <T, R> (fn: (_1: T) => R) => (t:T): R => fn(t)
 // 
 // Argument of type '(_: never) => never' is not assignable to parameter of type '(_: unknown) => unknown'.
 //   Types of parameters '_1' and '_1' are incompatible.
-//     Type 'unknown' is not assignable to type 'never'.
+//     Type 'unknown' is not assignable to type 'never'. ts(2345)
 apply(hole())
 
 
