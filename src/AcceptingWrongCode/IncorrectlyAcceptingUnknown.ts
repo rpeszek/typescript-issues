@@ -1,10 +1,22 @@
 /*
- * Examples of nonsense / wrong code accepted by the TypeScript compiler.
+ * Examples of confusing code accepted by the TypeScript compiler.
  * All have this in common: unknown is found somewhere in the type signature
  * 
  * Submitted as bug report
  * https://github.com/microsoft/TypeScript/issues/48624
  */
+
+//--------------------------------------------------
+//In TS, functions with fewer parameters assignable to functions that take more parameters
+//https://github.com/Microsoft/TypeScript/wiki/FAQ#why-are-functions-with-fewer-parameters-assignable-to-functions-that-take-more-parameters
+//--------------------------------------------------
+
+declare function testfn(fn: (_:string) => number):number
+
+declare function testfn2(fn: () => number):number
+
+//compiled type is number
+const num = testfn(() => 1)
 
 /**
  * Helper needed in examples
@@ -85,6 +97,7 @@ const example = async (item: Office.MessageRead): Promise<void> => {
     const nonsence =  await callbackPromise(
       curry3(myAynch)("html")(() => "boo"))
 }
+
 
 
 // --------------------------
